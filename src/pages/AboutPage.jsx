@@ -1,95 +1,116 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { motion } from 'framer-motion';
 
 const team = [
     {
         name: "James Murray",
         role: "Chief Executive Officer",
-        desc: "Describe the team member here. Write a brief description of their role and responsibilities, or a short bio with a background summary.",
-        image: "https://images.unsplash.com/photo-1542315750-f8d9b1069672?q=80&w=2670&auto=format&fit=crop" // Placeholder user 1
+        desc: "Visionary leader with over a decade of experience in AI and computational photography. Driving the future of digital asset creation.",
+        image: "https://images.unsplash.com/photo-1542315750-f8d9b1069672?q=80&w=2670&auto=format&fit=crop"
     },
     {
         name: "Laura Gonzales",
         role: "Chief Technology Officer",
-        desc: "Describe the team member here. Write a brief description of their role and responsibilities, or a short bio with a background summary.",
-        image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2527&auto=format&fit=crop" // Placeholder user 2
+        desc: "Expert in computer vision and machine learning. Architecting the neural networks that power our industry-leading generation engine.",
+        image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2527&auto=format&fit=crop"
     }
 ];
 
 const AboutPage = () => {
     return (
-        <div className="min-h-screen bg-stone-300">
-            <Navbar theme="solid" />
+        <div className="min-h-screen bg-dark-bg text-white selection:bg-primary selection:text-black overflow-hidden relative">
+            {/* Background Gradients */}
+            <div className="fixed bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
-            {/* Spacer for fixed navbar */}
-            <div className="h-20"></div>
+            <Navbar />
 
-            <main className="container mx-auto px-6 md:px-12 py-20 md:py-32">
+            <div className="h-24"></div>
+
+            <main className="container mx-auto px-6 md:px-12 py-10 md:py-20 relative z-10">
 
                 {/* 1. Who We Are Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 mb-40">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 mb-40"
+                >
                     <div>
-                        <h1 className="font-serif text-6xl md:text-8xl text-stone-900 leading-[0.9] mb-6">
-                            Who <br /> we are
+                        <h1 className="font-heading font-bold text-6xl md:text-8xl leading-none mb-6">
+                            Who <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">we are</span>
                         </h1>
-                        <p className="text-stone-500 font-medium text-lg max-w-sm">
-                            Delivering Results That Matter Since 2035
+                        <p className="text-lg font-mono text-primary uppercase tracking-widest mb-4">
+                            Est. 2025
                         </p>
                     </div>
-                    <div className="flex items-center">
-                        <div>
-                            <p className="text-stone-500 leading-relaxed mb-6">
-                                This is a space to share more about the business. Take advantage of this long text to tell people who’s behind it, what it does, how it began, and other details. It’s an excellent place to share the story behind the business and describe what this site has to offer its visitors.
+                    <div className="flex flex-col justify-center">
+                        <div className="glass-panel p-8 md:p-10 rounded-2xl relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <p className="text-gray-300 leading-relaxed mb-6 font-sans text-lg relative z-10">
+                                AI Marketing Studio is at the forefront of the generative media revolution. We are a team of researchers, designers, and engineers obsessed with solving the content bottleneck for modern brands.
                             </p>
-                            <p className="text-stone-500 leading-relaxed">
-                                Be sure to include all the relevant details users will want to know, like pricing, duration, and location. If they’ll need to prepare or bring anything with them, let them know here. Give users an idea of what to expect from the service and tell them how to book it.
+                            <p className="text-gray-300 leading-relaxed font-sans text-lg relative z-10">
+                                We believe that high-quality product photography shouldn't be limited by logistics, budgets, or physics. By harnessing the power of advanced AI, we empower businesses to create limitless visual assets instantly.
                             </p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* 2. Meet The Team Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 border-t border-stone-400/50 pt-20">
-                    {/* Sticky Header for Team Section */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 border-t border-white/10 pt-20">
+                    {/* Sticky Header */}
                     <div className="md:sticky md:top-32 h-fit">
-                        <h2 className="font-serif text-5xl md:text-7xl text-stone-900 leading-[0.9]">
-                            Meet the <br /> team
-                        </h2>
+                        <motion.h2
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="font-heading font-bold text-5xl md:text-7xl text-white leading-none"
+                        >
+                            Meet the <br /> <span className="text-gray-600">team</span>
+                        </motion.h2>
                     </div>
 
-                    {/* Team Grid (Right Column Stacking) */}
+                    {/* Team Grid */}
                     <div className="space-y-24">
                         {team.map((member, index) => (
-                            <div key={index} className="flex flex-col md:flex-row gap-8 items-start">
-                                {/* Circular Image */}
-                                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-stone-400 flex-shrink-0">
-                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: index * 0.2 }}
+                                className="flex flex-col md:flex-row gap-8 items-start group"
+                            >
+                                {/* Hexagon/Circular Image with Glow */}
+                                <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-20 group-hover:opacity-50 transition-opacity duration-300" />
+                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full border-2 border-white/10 relative z-10 group-hover:border-primary/50 transition-colors duration-300" />
                                 </div>
 
                                 {/* Details */}
                                 <div>
-                                    <h3 className="font-serif text-3xl text-stone-900 mb-2">{member.name}</h3>
-                                    <p className="text-stone-500 text-sm mb-4 leading-relaxed max-w-md">{member.desc}</p>
+                                    <h3 className="font-heading text-3xl text-white mb-2 group-hover:text-primary transition-colors">{member.name}</h3>
+                                    <p className="text-secondary font-bold text-xs uppercase tracking-widest mb-4">{member.role}</p>
+                                    <p className="text-gray-400 text-sm mb-6 leading-relaxed max-w-md font-sans">{member.desc}</p>
 
                                     {/* Social Icons */}
-                                    <div className="flex gap-4 text-stone-900 text-sm">
-                                        <a href="#" className="hover:opacity-70">IG</a>
-                                        <a href="#" className="hover:opacity-70">X</a>
-                                        <a href="#" className="hover:opacity-70">Tk</a>
-                                        <a href="#" className="hover:opacity-70">Fb</a>
+                                    <div className="flex gap-4 text-gray-500 text-sm font-mono">
+                                        <a href="#" className="hover:text-white transition-colors">LIN</a>
+                                        <a href="#" className="hover:text-white transition-colors">X</a>
+                                        <a href="#" className="hover:text-white transition-colors">IG</a>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
 
             </main>
 
-            <div className="bg-beige-50">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };

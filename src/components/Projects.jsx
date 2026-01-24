@@ -13,7 +13,6 @@ const projects = [
         id: 2,
         title: "Oculous One",
         category: "Product Design",
-        // This one represents the "dark container with UI mockup" vibe from the template
         image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2574&auto=format&fit=crop",
         size: "aspect-square",
         isDark: true
@@ -36,20 +35,42 @@ const projects = [
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-24 md:py-32 bg-stone-200">
-            <div className="container mx-auto px-6 md:px-12">
+        <section id="projects" className="py-24 md:py-32 bg-dark-bg relative overflow-hidden">
+            {/* Decorative background glow */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+            <div className="container mx-auto px-6 md:px-12 relative z-10">
 
                 {/* Header */}
                 <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
                     <div>
-                        <span className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-4">Selected Work</span>
-                        <h2 className="font-serif text-5xl md:text-7xl text-stone-900 leading-[0.9]">
-                            Selected <br /> <span className="italic">projects</span>
-                        </h2>
+                        <motion.span
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="block text-xs font-bold font-mono uppercase tracking-widest text-primary mb-4"
+                        >
+                            Selected Work
+                        </motion.span>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="font-heading font-bold text-5xl md:text-7xl text-white leading-none"
+                        >
+                            Featured <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">projects</span>
+                        </motion.h2>
                     </div>
-                    <a href="#" className="hidden md:inline-flex items-center gap-2 text-stone-900 border-b border-stone-400 pb-1 hover:border-stone-900 transition-colors">
+                    <motion.a
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        href="#"
+                        className="hidden md:inline-flex items-center gap-2 text-white border-b border-primary/50 pb-1 hover:border-primary hover:text-primary transition-colors duration-300 font-mono text-sm"
+                    >
                         View All Projects <span className="text-xl">→</span>
-                    </a>
+                    </motion.a>
                 </div>
 
                 {/* Grid */}
@@ -61,32 +82,33 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1 }}
-                            className={`flex flex-col gap-6 ${index % 2 !== 0 ? 'md:mt-24' : ''}`} // Offset effect for masonry feel
+                            className={`flex flex-col gap-6 ${index % 2 !== 0 ? 'md:mt-24' : ''}`} // Offset effect
                         >
-                            <div className={`w-full overflow-hidden ${project.size} relative group bg-stone-300`}>
+                            <div className={`w-full overflow-hidden ${project.size} relative group rounded-lg`}>
+                                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none mix-blend-overlay" />
                                 <img
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 {project.isDark && (
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500"></div>
                                 )}
                             </div>
 
-                            <div className="flex justify-between items-start border-t border-stone-400/30 pt-4">
+                            <div className="flex justify-between items-start border-t border-white/10 pt-4 group">
                                 <div>
-                                    <h3 className="font-serif text-3xl text-stone-900 mb-1">{project.title}</h3>
-                                    <p className="text-stone-500 text-sm font-medium tracking-wide">{project.category}</p>
+                                    <h3 className="font-heading text-3xl text-white mb-1 group-hover:text-primary transition-colors duration-300">{project.title}</h3>
+                                    <p className="text-gray-400 text-sm font-medium tracking-wide font-mono">{project.category}</p>
                                 </div>
-                                <span className="text-xs font-bold text-stone-400">2025</span>
+                                <span className="text-xs font-bold font-mono text-gray-500 group-hover:text-white transition-colors">2026</span>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
                 <div className="mt-16 text-center md:hidden">
-                    <a href="#" className="inline-flex items-center gap-2 text-stone-900 border-b border-stone-400 pb-1">
+                    <a href="#" className="inline-flex items-center gap-2 text-white border-b border-white/50 pb-1">
                         View All Projects <span className="text-xl">→</span>
                     </a>
                 </div>

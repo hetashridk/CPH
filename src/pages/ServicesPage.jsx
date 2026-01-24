@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { motion } from 'framer-motion';
 
 const services = [
     {
@@ -30,86 +31,131 @@ const services = [
     }
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
 const ServicesPage = () => {
     return (
-        <div className="min-h-screen bg-sage-300">
-            <Navbar theme="solid" />
-            {/* Spacer for fixed navbar */}
-            <div className="h-20"></div>
+        <div className="min-h-screen bg-dark-bg text-white selection:bg-primary selection:text-black overflow-hidden relative">
+            {/* Background Gradients */}
+            <div className="fixed top-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
-            <main className="container mx-auto px-6 md:px-12 py-20 md:py-32">
+            <Navbar />
 
-                {/* 1. Hero Section ("What we do") */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 mb-32">
+            <div className="h-24"></div>
+
+            <main className="container mx-auto px-6 md:px-12 py-10 md:py-20 relative z-10">
+
+                {/* 1. Hero Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 mb-32"
+                >
                     <div>
-                        <h1 className="font-serif text-6xl md:text-8xl text-stone-900 leading-[0.9] mb-8">
-                            What <br /> we do
+                        <h1 className="font-heading font-bold text-6xl md:text-8xl leading-none mb-8">
+                            What <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">we do</span>
                         </h1>
                     </div>
-                    <div className="flex flex-col gap-6 text-stone-800 font-medium leading-relaxed max-w-lg">
+                    <div className="flex flex-col gap-6 text-gray-300 font-sans text-lg leading-relaxed max-w-lg pt-4">
                         <p>
-                            This is the space to describe the service. Focus the description on how customers or clients can benefit from using this service: explain how it solves a problem, or makes life easier or more enjoyable.
+                            We revolutionize product photography using advanced AI. Our platform transforms simple uploads into studio-grade masterpieces, saving you time and resources while elevating your brand's visual identity.
                         </p>
                         <p>
-                            Be sure to include all the relevant details users will want to know, like pricing, duration, and location. If they’ll need to prepare or bring anything with them, let them know here.
+                            Whether you need one hero image or a catalog of thousands, our automated pipeline delivers consistent, 4K-ready results in seconds. No studio required.
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* 2. Services Grid ("Services" + Cards) */}
-                <div className="border-t border-stone-800/10 pt-20">
+                {/* 2. Services Grid */}
+                <div className="border-t border-white/10 pt-20">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
                         {/* Sticky Header "Services" */}
                         <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-                            <h2 className="font-serif text-5xl md:text-6xl text-stone-900 mb-8 opacity-90">
+                            <motion.h2
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="font-heading font-bold text-5xl md:text-6xl text-white mb-8"
+                            >
                                 Services
-                            </h2>
+                            </motion.h2>
                         </div>
 
                         {/* Cards Grid */}
-                        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6"
+                        >
                             {services.map((service, index) => (
-                                <div key={index} className="bg-white p-10 md:p-12 min-h-[350px] flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
-                                    <span className="text-xs font-bold text-stone-400 mb-4 block">{service.id}</span>
+                                <motion.div
+                                    key={index}
+                                    variants={itemVariants}
+                                    className="glass-panel p-10 md:p-12 min-h-[350px] flex flex-col justify-between group hover:border-primary/50 transition-all duration-500 hover:shadow-glow-cyan"
+                                >
+                                    <span className="text-xs font-bold font-mono text-primary/80 mb-4 block group-hover:text-primary transition-colors">{service.id}</span>
                                     <div>
-                                        <h3 className="font-sans font-light text-3xl text-stone-800 mb-6 leading-tight">
+                                        <h3 className="font-heading text-3xl text-white mb-6 leading-tight group-hover:translate-x-2 transition-transform duration-300">
                                             {service.title}
                                         </h3>
-                                        <p className="text-stone-500 text-sm leading-relaxed">
+                                        <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
                                             {service.desc}
                                         </p>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
 
                     </div>
                 </div>
 
-                {/* 3. Client Testimonials (Bottom Section) */}
-                <div className="mt-40 border-t border-stone-800/10 pt-20">
+                {/* 3. Client Testimonials */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mt-40 border-t border-white/10 pt-20"
+                >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                         <div>
-                            <h2 className="font-serif text-5xl md:text-6xl text-stone-900 leading-tight mb-8">
-                                Client <br /> testimonials
+                            <h2 className="font-heading font-bold text-5xl md:text-6xl text-white leading-tight mb-8">
+                                Client <br /> <span className="text-gray-500">testimonials</span>
                             </h2>
                         </div>
                         <div>
-                            <blockquote className="font-serif text-3xl md:text-4xl text-stone-900 italic leading-tight mb-8">
-                                "Worth every minute working together."
+                            <blockquote className="font-heading text-3xl md:text-4xl text-white leading-tight mb-8 relative">
+                                <span className="absolute -left-8 -top-8 text-6xl text-primary/20 font-serif">"</span>
+                                It's like having a full production team in my pocket. The ROI was immediate.
                             </blockquote>
-                            <p className="text-stone-600 mb-2">Given Name, Company Role</p>
-                            <p className="text-stone-400 text-sm">This is the space to share a review from one of the business's clients.</p>
+                            <p className="text-primary font-bold mb-2">Sarah Jenkins, Creative Director</p>
+                            <p className="text-gray-500 text-sm">Fashion Forward Co.</p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
             </main>
 
-            <div className="bg-beige-50">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };

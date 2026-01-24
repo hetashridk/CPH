@@ -10,12 +10,28 @@ import TermsPage from './pages/TermsPage';
 // ScrollToTop component to reset scroll on route change
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { initGA, trackPageView } from './utils/analytics';
+
+// Initialize GA4
+initGA();
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  return null;
+};
+
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
   return null;
 };
 
@@ -23,6 +39,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <AnalyticsTracker />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
