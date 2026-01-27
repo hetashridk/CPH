@@ -26,7 +26,7 @@ const Comparison = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     {/* Old Way */}
                     <GlassCard className="!bg-black/40 !border-white/5 opacity-80 hover:opacity-100 transition-opacity">
-                        <div className="h-64 mb-8 rounded-xl overflow-hidden relative">
+                        <div className="h-48 mb-6 rounded-xl overflow-hidden relative">
                             <div className="absolute inset-0 bg-stone-900/50 flex items-center justify-center z-10">
                                 <span className="px-3 py-1 bg-red-500/20 text-red-500 border border-red-500/50 rounded text-xs font-bold uppercase tracking-wider">Slow & Expensive</span>
                             </div>
@@ -36,11 +36,15 @@ const Comparison = () => {
                                 className="w-full h-full object-cover grayscale opacity-50"
                             />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-500 mb-2">Traditional Studio</h3>
-                        <ul className="space-y-3 text-gray-500 text-sm">
-                            <li className="flex items-center gap-2">❌ $500+ per session</li>
-                            <li className="flex items-center gap-2">❌ 3-5 days turnaround</li>
-                            <li className="flex items-center gap-2">❌ Logistics & shipping nightmare</li>
+                        <h3 className="text-2xl font-bold text-gray-400 mb-6">Old Traditional Shoots</h3>
+                        <ul className="space-y-4 text-gray-500 text-sm">
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> You need professional photographers</li>
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> Limited products in one time shoot</li>
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> Long Brainstorming Sessions</li>
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> Countless hours for themes</li>
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> Need to pay for consultation also</li>
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> Quality depends on the gears and tools</li>
+                            <li className="flex items-start gap-3"><span className="text-red-900/50 mt-1">❌</span> Large budgets locked into single shoots</li>
                         </ul>
                     </GlassCard>
 
@@ -48,7 +52,7 @@ const Comparison = () => {
                     <GlassCard className="!border-primary/30 relative overflow-hidden group">
                         <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
 
-                        <div className="h-64 mb-8 rounded-xl overflow-hidden relative border border-primary/20">
+                        <div className="h-48 mb-6 rounded-xl overflow-hidden relative border border-primary/20">
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center pb-6 z-10">
                                 <span className="px-3 py-1 bg-primary/20 text-primary border border-primary/50 rounded text-xs font-bold uppercase tracking-wider shadow-glow-cyan">Instant & Scalable</span>
                             </div>
@@ -58,11 +62,15 @@ const Comparison = () => {
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             />
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-2">AI Marketing Studio</h3>
-                        <ul className="space-y-3 text-gray-300 text-sm font-medium">
-                            <li className="flex items-center gap-2 text-primary">✓ $0.50 per image</li>
-                            <li className="flex items-center gap-2 text-primary">✓ Seconds to generate</li>
-                            <li className="flex items-center gap-2 text-primary">✓ Entirely digital workflow</li>
+                        <h3 className="text-2xl font-bold text-white mb-6">AI Marketing Studio</h3>
+                        <ul className="space-y-4 text-gray-300 text-sm font-medium">
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> Easy to Use</li>
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> Batch Production (Bulk)</li>
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> Auto Prompting from images</li>
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> 1,00,000 + Free Prompt Library</li>
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> Free Brand Analysis</li>
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> Up to 4k Resolution photos</li>
+                            <li className="flex items-start gap-3"><span className="text-primary mt-1">✓</span> Designed to reduce photography expenses</li>
                         </ul>
                     </GlassCard>
                 </div>

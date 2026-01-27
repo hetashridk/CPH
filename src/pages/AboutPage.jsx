@@ -50,10 +50,11 @@ const AboutPage = () => {
                         <div className="glass-panel p-8 md:p-10 rounded-2xl relative overflow-hidden group">
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <p className="text-gray-300 leading-relaxed mb-6 font-sans text-lg relative z-10">
-                                AI Marketing Studio is at the forefront of the generative media revolution. We are a team of researchers, designers, and engineers obsessed with solving the content bottleneck for modern brands.
+                                AI Marketing Studio was born after nearly a decade in traditional photoshoots and video production. While the creative work was strong, the system was broken, with endless revisions, delays, high costs, and shrinking ROI. The issue wasn’t creativity, but slow, manual, approval-heavy workflows. As AI evolved, our founder, Piyush Bharoliya, chose to build with the future, creating AI Marketing Studio to remove friction, not replace creativity.
+
                             </p>
                             <p className="text-gray-300 leading-relaxed font-sans text-lg relative z-10">
-                                We believe that high-quality product photography shouldn't be limited by logistics, budgets, or physics. By harnessing the power of advanced AI, we empower businesses to create limitless visual assets instantly.
+                                Today, we help brands replace weeks of production with hours, large crews with simple workflows, and high costs with scalable systems. By reducing manual labour, we free teams to focus on ideas and growth. We believe technology should create independence, not dependency. We avoid inflated promises, ethics matter more than growth, and pride more than shortcuts. AI Marketing Studio exists to help brands move faster, spend less, and create freely.
                             </p>
                         </div>
                     </div>

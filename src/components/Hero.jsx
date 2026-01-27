@@ -27,7 +27,7 @@ const Hero = () => {
                     transition={{ duration: 1 }}
                     className="inline-block mb-6 px-4 py-1 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md"
                 >
-                    <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">The Future of Photography</span>
+                    <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">The Future of Product Photography</span>
                 </motion.div>
 
                 <div className="max-w-5xl mx-auto mb-10">
@@ -59,7 +59,7 @@ const Hero = () => {
                         Start Creating
                     </GlowingButton>
                     <GlowingButton variant="secondary" onClick={() => { }}>
-                        View Showcase
+                        Book a Demo
                     </GlowingButton>
                 </motion.div>
 

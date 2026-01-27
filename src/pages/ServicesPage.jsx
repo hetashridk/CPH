@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import WorkshopSection from '../components/WorkshopSection';
 import { motion } from 'framer-motion';
 
 const services = [
@@ -60,7 +61,7 @@ const ServicesPage = () => {
             <main className="container mx-auto px-6 md:px-12 py-10 md:py-20 relative z-10">
 
                 {/* 1. Hero Section */}
-                <motion.div
+                {/** <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
@@ -80,13 +81,12 @@ const ServicesPage = () => {
                             Whether you need one hero image or a catalog of thousands, our automated pipeline delivers consistent, 4K-ready results in seconds. No studio required.
                         </p>
                     </div>
-                </motion.div>
+                </motion.div> */}
 
                 {/* 2. Services Grid */}
-                <div className="border-t border-white/10 pt-20">
+                {/*  <div className="border-t border-white/10 pt-20">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-                        {/* Sticky Header "Services" */}
                         <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
                             <motion.h2
                                 initial={{ opacity: 0, x: -20 }}
@@ -98,7 +98,6 @@ const ServicesPage = () => {
                             </motion.h2>
                         </div>
 
-                        {/* Cards Grid */}
                         <motion.div
                             variants={containerVariants}
                             initial="hidden"
@@ -126,10 +125,13 @@ const ServicesPage = () => {
                         </motion.div>
 
                     </div>
-                </div>
+                </div> */}
+
+                {/* 2.5. Workshop Section */}
+                <WorkshopSection />
 
                 {/* 3. Client Testimonials */}
-                <motion.div
+                {/** <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -151,7 +153,7 @@ const ServicesPage = () => {
                             <p className="text-gray-500 text-sm">Fashion Forward Co.</p>
                         </div>
                     </div>
-                </motion.div>
+                </motion.div> */}
 
             </main>
 
