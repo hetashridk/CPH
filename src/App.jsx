@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ServicesPage from './pages/ServicesPage';
+// import ServicesPage from './pages/ServicesPage';
+import WorkshopPage from './pages/WorkshopPage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
@@ -42,7 +43,8 @@ function App() {
       <AnalyticsTracker />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/workshop" element={<WorkshopPage />} />
+        {/* <Route path="/services" element={<ServicesPage />} /> */}
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
