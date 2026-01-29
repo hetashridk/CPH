@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import AnimatedText from './ui/AnimatedText';
 import GlowingButton from './ui/GlowingButton';
+import { useModal } from '../context/ModalContext';
 
 const Hero = () => {
+    const { openModal } = useModal();
     return (
         <section className="relative h-screen min-h-[800px] w-full overflow-hidden bg-dark-bg flex items-center justify-center">
 
@@ -58,7 +60,7 @@ const Hero = () => {
                     <GlowingButton variant="primary" onClick={() => document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' })}>
                         Start Creating
                     </GlowingButton>
-                    <GlowingButton variant="secondary" onClick={() => { }}>
+                    <GlowingButton variant="secondary" onClick={openModal}>
                         Book a Demo
                     </GlowingButton>
                 </motion.div>

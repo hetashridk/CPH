@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+// import RegistrationModal from '../components/RegistrationModal'; // Removed - using Context
+import { useModal } from '../context/ModalContext';
 import Footer from '../components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -29,6 +31,7 @@ const FAQs = [
 
 const WorkshopPage = () => {
     const [openFaq, setOpenFaq] = useState(null);
+    const { openModal } = useModal();
 
     const toggleFaq = (index) => {
         setOpenFaq(openFaq === index ? null : index);
@@ -74,7 +77,9 @@ const WorkshopPage = () => {
 
                             {/* CTA Button */}
                             <div>
-                                <button className="px-8 py-4 bg-primary text-black font-bold text-lg rounded-lg hover:bg-primary-light transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.3)] w-full md:w-auto">
+                                <button
+                                    onClick={openModal}
+                                    className="px-8 py-4 bg-primary text-black font-bold text-lg rounded-lg hover:bg-primary-light transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.3)] w-full md:w-auto">
                                     Claim your spot
                                 </button>
                             </div>
@@ -421,13 +426,16 @@ const WorkshopPage = () => {
                         Learn once. <span className="text-primary">Use forever.</span>
                     </h2>
                     <p className="text-xl text-gray-400 mb-12">Build visuals without depending on studios again.</p>
-                    <button className="px-12 py-6 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-                        Book Your Spot Now
+                    <button
+                        onClick={openModal}
+                        className="px-12 py-6 bg-white text-black font-bold text-xl rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_50px_rgba(255,255,255,0.2)]">
+                        Book an Appointment
                     </button>
                     <p className="mt-6 text-sm text-gray-600">100% Satisfaction Guarantee</p>
                 </div>
             </section>
 
+            {/* <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />  */}
             <Footer />
         </div>
     );

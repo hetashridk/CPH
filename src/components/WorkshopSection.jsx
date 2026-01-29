@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useModal } from '../context/ModalContext';
 
 const WorkshopSection = () => {
+    const { openModal } = useModal();
     return (
         <section className="py-20 md:py-32 relative border-t border-white/10">
             <div className="container mx-auto px-6 md:px-12">
@@ -213,7 +215,9 @@ const WorkshopSection = () => {
                         Learn once. <span className="text-primary">Use forever.</span>
                     </h2>
                     <p className="text-xl text-gray-400 mb-10">Build visuals without depending on studios again.</p>
-                    <button className="px-10 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    <button
+                        onClick={openModal}
+                        className="px-10 py-5 bg-white text-black font-bold text-lg rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                         Book Workshop Now
                     </button>
                 </div>
