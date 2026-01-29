@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // TODO: PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
-const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3nMetSrC75mOSv9TE37kcJ-v46Q1z92TSAXpI8tCd6bvWvL-FIDsJROM2Oy-Or5If/exec";
 
 const countryOptions = [
     { code: '+93', label: 'AF (+93)', min: 9, max: 9 },
