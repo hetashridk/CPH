@@ -8,13 +8,21 @@ export const useModal = () => useContext(ModalContext);
 export const ModalProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const [modalData, setModalData] = useState(null);
+
+    const openModal = (data = null) => {
+        setModalData(data);
+        setIsModalOpen(true);
+    };
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setModalData(null);
+    };
 
     return (
         <ModalContext.Provider value={{ isModalOpen, openModal, closeModal }}>
             {children}
-            <RegistrationModal isOpen={isModalOpen} onClose={closeModal} />
+            <RegistrationModal isOpen={isModalOpen} onClose={closeModal} initialData={modalData} />
         </ModalContext.Provider>
     );
 };

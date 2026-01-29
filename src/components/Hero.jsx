@@ -60,7 +60,7 @@ const Hero = () => {
                     <GlowingButton variant="primary" onClick={() => document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' })}>
                         Start Creating
                     </GlowingButton>
-                    <GlowingButton variant="secondary" onClick={openModal}>
+                    <GlowingButton variant="secondary" onClick={() => openModal({ type: 'demo' })}>
                         Book a Demo
                     </GlowingButton>
                 </motion.div>

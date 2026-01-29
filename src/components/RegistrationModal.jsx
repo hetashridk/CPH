@@ -244,7 +244,9 @@ const countryOptions = [
     { code: 'other', label: 'Other', min: 8, max: 15 }
 ];
 
-const RegistrationModal = ({ isOpen, onClose }) => {
+const RegistrationModal = ({ isOpen, onClose, initialData }) => {
+    const isDemo = initialData?.type === 'demo';
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -253,6 +255,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
         profession: '',
         details: '', // Holds "What are you studying" or "Field/Industry"
         learningGoals: '',
+        companyName: '',
         message: ''
     });
     const [errors, setErrors] = useState({});
@@ -333,22 +336,21 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 
         setIsSubmitting(true);
 
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby97ZrJzjBIPco_AlQ2QUebNyEW2S0lqHdWTiGq7FhqNQPmAM8tWh6Yym4hRGBeEvRK/exec"; // "https://script.google.com/macros/s/AKfycbx3nMetSrC75mOSv9TE37kcJ-v46Q1z92TSAXpI8tCd6bvWvL-FIDsJROM2Oy-Or5If/exec";
+
         try {
-            if (GOOGLE_SCRIPT_URL === "YOUR_WEB_APP_URL_HERE" || !GOOGLE_SCRIPT_URL) {
-                console.warn("Please configure your Google Apps Script URL in RegistrationModal.jsx");
+            if ((GOOGLE_SCRIPT_URL === "YOUR_WEB_APP_URL_HERE" || !GOOGLE_SCRIPT_URL)) {
+                console.warn("Please configure your Google Apps Script URL in .env");
                 // Fallback simulation for demo
                 await new Promise(resolve => setTimeout(resolve, 1500));
             } else {
                 // Actual submission
-                // Using 'no-cors' is often required for Google Apps Script to work from client-side without errors,
-                // but it means we can't read the response status. We assume success if no network error.
-                // If you want to read response, you likely need a proxy or rely on the redirect handling.
                 await fetch(GOOGLE_SCRIPT_URL, {
                     method: "POST",
-                    body: JSON.stringify(formData),
-                    mode: 'no-cors', // Important for Google Apps Script
+                    body: JSON.stringify({ ...formData, submissionType: isDemo ? 'Demo' : 'Workshop' }),
+                    mode: 'no-cors',
                     headers: {
-                        "Content-Type": "text/plain", // Treat as text to avoid preflight
+                        "Content-Type": "text/plain",
                     },
                 });
             }
@@ -366,6 +368,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
                     profession: '',
                     details: '',
                     learningGoals: '',
+                    companyName: '',
                     message: ''
                 });
             }, 2000);
@@ -400,8 +403,12 @@ const RegistrationModal = ({ isOpen, onClose }) => {
                             {/* Header */}
                             <div className="p-6 border-b border-white/10 bg-dark-surface sticky top-0 z-10 flex justify-between items-center">
                                 <div>
-                                    <h2 className="text-2xl font-heading font-bold text-white">Claim Your Spot</h2>
-                                    <p className="text-gray-400 text-sm mt-1">Join the AI Revolution today.</p>
+                                    <h2 className="text-2xl font-heading font-bold text-white">
+                                        {isDemo ? 'Book a Demo' : 'Claim Your Spot'}
+                                    </h2>
+                                    <p className="text-gray-400 text-sm mt-1">
+                                        {isDemo ? 'See how AI can transform your product photography.' : 'Join the AI Revolution today.'}
+                                    </p>
                                 </div>
                                 <button
                                     onClick={onClose}
@@ -542,18 +549,33 @@ const RegistrationModal = ({ isOpen, onClose }) => {
                                             )}
                                         </AnimatePresence>
 
-                                        <div className="space-y-2">
-                                            <label className="text-sm font-medium text-gray-300">What would you like to learn in the AI Workshop?</label>
-                                            <input
-                                                type="text"
-                                                name="learningGoals"
-                                                required
-                                                value={formData.learningGoals}
-                                                onChange={handleChange}
-                                                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-gray-600"
-                                                placeholder="e.g. Image generation, Automation workflows..."
-                                            />
-                                        </div>
+                                        {isDemo ? (
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium text-gray-300">Company Name</label>
+                                                <input
+                                                    type="text"
+                                                    name="companyName"
+                                                    required
+                                                    value={formData.companyName}
+                                                    onChange={handleChange}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-gray-600"
+                                                    placeholder="e.g. Acme Corp"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium text-gray-300">What would you like to learn in the AI Workshop?</label>
+                                                <input
+                                                    type="text"
+                                                    name="learningGoals"
+                                                    required
+                                                    value={formData.learningGoals}
+                                                    onChange={handleChange}
+                                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all placeholder:text-gray-600"
+                                                    placeholder="e.g. Image generation, Automation workflows..."
+                                                />
+                                            </div>
+                                        )}
 
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium text-gray-300">Any Message (Optional)</label>
@@ -569,7 +591,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
 
                                         <button
                                             type="submit"
-                                            disabled={isSubmitting || !formData.name || !formData.email || !formData.phone || !formData.profession || !formData.details || !formData.learningGoals || Object.values(errors).some(err => err)}
+                                            disabled={isSubmitting || !formData.name || !formData.email || !formData.phone || !formData.profession || !formData.details || (isDemo ? !formData.companyName : !formData.learningGoals) || Object.values(errors).some(err => err)}
                                             className="w-full py-4 bg-primary text-black font-bold text-lg rounded-lg hover:bg-primary-light transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed mt-4"
                                         >
                                             {isSubmitting ? 'Submitting...' : 'Submit'}
