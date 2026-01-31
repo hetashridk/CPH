@@ -18,9 +18,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: 'AI Marketing Studio', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Workshop', path: '/workshop' },
-    { name: 'Projects', path: '/projects' },
+    // { name: 'Projects', path: '/projects' },
   ];
 
   const variants = {
@@ -47,7 +48,7 @@ const Navbar = () => {
               </svg>
             </div>
             <span className="font-heading font-bold text-xl tracking-wide text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300">
-              AI Studio
+              CrossLinks
             </span>
           </Link>
 

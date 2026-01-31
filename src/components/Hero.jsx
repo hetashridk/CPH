@@ -29,14 +29,14 @@ const Hero = () => {
                     transition={{ duration: 1 }}
                     className="inline-block mb-6 px-4 py-1 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md"
                 >
-                    <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">The Future of Product Photography</span>
+                    <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase">AI MARKETING STUDIO</span>
                 </motion.div>
 
                 <div className="max-w-5xl mx-auto mb-10">
-                    <h1 className="font-heading font-bold text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-white tracking-tight">
-                        <AnimatedText text="Product Photos" className="justify-center" />
+                    <h1 className="font-heading font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.9] text-white tracking-tight">
+                        <AnimatedText text="The Visual" className="justify-center" />
                         <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-secondary animate-gradient-x">
-                            at Speed of Light
+                            Production System for Modern Brands
                         </span>
                     </h1>
                 </div>
@@ -47,8 +47,7 @@ const Hero = () => {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
                 >
-                    Generate award-winning product photography in seconds.
-                    No studio, no crew, just pure <span className="text-white font-medium">AI perfection</span>.
+                    AI Marketing Studio replaces photoshoots, agencies, and slow creative workflows with an <span className="text-white font-medium">AI-powered production system for product visuals</span>.
                 </motion.p>
 
                 <motion.div
@@ -57,12 +56,18 @@ const Hero = () => {
                     transition={{ delay: 0.8 }}
                     className="flex flex-col md:flex-row gap-6 justify-center items-center"
                 >
-                    <GlowingButton variant="primary" onClick={() => document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' })}>
+                    <GlowingButton variant="primary" onClick={() => openModal({ type: 'demo' })}>
+                        Book Live Demo
+                    </GlowingButton>
+                    {/* <GlowingButton variant="primary" onClick={() => document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' })}>
                         Start Creating
+                    </GlowingButton> */}
+                    <GlowingButton variant="secondary" onClick={openModal}>
+                        Join Operator Workshop
                     </GlowingButton>
-                    <GlowingButton variant="secondary" onClick={() => openModal({ type: 'demo' })}>
+                    {/* <GlowingButton variant="secondary" onClick={() => openModal({ type: 'demo' })}>
                         Book a Demo
-                    </GlowingButton>
+                    </GlowingButton> */}
                 </motion.div>
 
                 {/* Floating Elements */}

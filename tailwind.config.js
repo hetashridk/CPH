@@ -7,51 +7,25 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Syne', 'sans-serif'],
-        sans: ['"Space Grotesk"', 'sans-serif'],
+        heading: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"Inter"', 'sans-serif'],
       },
       colors: {
-        dark: {
-          bg: '#030305',
-          surface: '#0E0E11',
-          card: 'rgba(255, 255, 255, 0.03)',
-        },
-        primary: {
-          DEFAULT: '#00F0FF', // Neon Cyan
-          glow: '#00F0FF80',
-        },
-        secondary: {
-          DEFAULT: '#7000FF', // Electric Purple
-          glow: '#7000FF80',
-        },
-        accent: {
-          DEFAULT: '#FF2E7E', // Hyper Pink
-        },
-        gray: {
-          100: '#E0E0E0',
-          200: '#C2C2C2',
-          300: '#A3A3A3',
-          400: '#858585',
-          500: '#666666',
-          600: '#474747',
-          700: '#292929',
-          800: '#1F1F1F',
-          900: '#141414',
+        'dark-bg': '#030305',
+        'dark-surface': '#0F1115',
+        'dark-card': '#181B21',
+        primary: '#00C6FF',
+        secondary: '#0072FF',
+        holo: {
+          bg: '#F8F9FC',
+          primary: '#00C6FF',
+          secondary: '#0072FF',
+          accent: '#FF00E6',
         }
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #00F0FF 0deg, #7000FF 180deg, #FF2E7E 360deg)',
-        'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
-      },
-      boxShadow: {
-        'glow-cyan': '0 0 20px -5px rgba(0, 240, 255, 0.5)',
-        'glow-purple': '0 0 20px -5px rgba(112, 0, 255, 0.5)',
-      },
       animation: {
-        'spin-slow': 'spin 8s linear infinite',
         'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-slow': 'spin 15s linear infinite',
       },
       keyframes: {
         float: {

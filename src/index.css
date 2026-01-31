@@ -5,49 +5,58 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap'); */
 
 @layer base {
-  body {
-    @apply bg-dark-bg text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-black;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold tracking-tight;
-  }
+    body {
+        background-color: #030305;
+        @apply text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-black;
+    }
 
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-dark-bg;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-800 rounded-full hover:bg-gray-700 transition-colors;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading font-bold tracking-tight;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #030305;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-gray-800 rounded-full hover:bg-gray-700 transition-colors;
+    }
 }
 
 @layer components {
-  .container {
-    @apply max-w-[1400px] mx-auto px-6 md:px-12 relative z-10;
-  }
+    .container {
+        @apply max-w-[1400px] mx-auto px-6 md:px-12 relative z-10;
+    }
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400;
-  }
-  
-  .text-gradient-primary {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-secondary;
-  }
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400;
+    }
 
-  .glass-panel {
-    @apply bg-dark-card backdrop-blur-xl border border-white/10 shadow-xl;
-  }
+    .text-gradient-primary {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-secondary;
+    }
 
-  .btn {
-    @apply inline-flex items-center justify-center px-8 py-3 transition-all duration-300 font-medium tracking-wide relative overflow-hidden;
-  }
+    .glass-panel {
+        background-color: #181B21;
+        @apply backdrop-blur-xl border border-white/10 shadow-xl;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center px-8 py-3 transition-all duration-300 font-medium tracking-wide relative overflow-hidden;
+    }
 }
 
 /* Lenis or Native Smooth Scroll */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
