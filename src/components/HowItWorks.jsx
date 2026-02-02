@@ -29,7 +29,7 @@ const HowItWorks = () => {
             <div className="container px-6 relative z-10">
                 <div className="text-center mb-20">
                     <h2 className="font-heading font-bold text-4xl md:text-5xl text-white mb-4">
-                        Creation <span className="text-gray-500">Simplifed</span>
+                        Creation <span className="text-gray-500">Simplified</span>
                     </h2>
                 </div>
 

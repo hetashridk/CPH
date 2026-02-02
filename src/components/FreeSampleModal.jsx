@@ -255,7 +255,8 @@ const FreeSampleModal = ({ isOpen, onClose }) => {
         companyName: '',
         email: '',
         phone: '',
-        countryCode: '+91'
+        countryCode: '+91',
+        styleInstructions: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
@@ -590,6 +591,18 @@ const FreeSampleModal = ({ isOpen, onClose }) => {
                                                             />
                                                         </div>
                                                         {fieldErrors.phone && <p className="text-xs text-red-500 mt-1 font-medium">{fieldErrors.phone}</p>}
+                                                    </div>
+
+                                                    <div>
+                                                        <label className="text-sm text-gray-400 block mb-1">Style Preferences / Instructions <span className="text-gray-500 text-xs">(Optional)</span></label>
+                                                        <textarea
+                                                            name="styleInstructions"
+                                                            value={formData.styleInstructions}
+                                                            onChange={handleInputChange}
+                                                            rows="3"
+                                                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary/50 focus:outline-none resize-none placeholder:text-gray-600"
+                                                            placeholder="Tell us about the vibe, colors, or specific style you're looking for..."
+                                                        />
                                                     </div>
 
                                                     <button

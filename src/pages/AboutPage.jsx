@@ -5,17 +5,17 @@ import { motion } from 'framer-motion';
 
 const team = [
     {
-        name: "James Murray",
-        role: "Chief Executive Officer",
+        name: "Piyush Bharoliya",
+        role: "Founder",
         desc: "Visionary leader with over a decade of experience in AI and computational photography. Driving the future of digital asset creation.",
         image: "https://images.unsplash.com/photo-1542315750-f8d9b1069672?q=80&w=2670&auto=format&fit=crop"
     },
-    {
-        name: "Laura Gonzales",
-        role: "Chief Technology Officer",
-        desc: "Expert in computer vision and machine learning. Architecting the neural networks that power our industry-leading generation engine.",
-        image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2527&auto=format&fit=crop"
-    }
+    // {
+    //     name: "Laura Gonzales",
+    //     role: "Chief Technology Officer",
+    //     desc: "Expert in computer vision and machine learning. Architecting the neural networks that power our industry-leading generation engine.",
+    //     image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=2527&auto=format&fit=crop"
+    // }
 ];
 
 const AboutPage = () => {
