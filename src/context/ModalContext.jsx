@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import RegistrationModal from '../components/RegistrationModal';
+import FreeSampleModal from '../components/FreeSampleModal';
 
 const ModalContext = createContext();
 
@@ -22,7 +23,11 @@ export const ModalProvider = ({ children }) => {
     return (
         <ModalContext.Provider value={{ isModalOpen, openModal, closeModal }}>
             {children}
-            <RegistrationModal isOpen={isModalOpen} onClose={closeModal} initialData={modalData} />
+            {modalData?.type === 'free-sample' ? (
+                <FreeSampleModal isOpen={isModalOpen} onClose={closeModal} />
+            ) : (
+                <RegistrationModal isOpen={isModalOpen} onClose={closeModal} initialData={modalData} />
+            )}
         </ModalContext.Provider>
     );
 };

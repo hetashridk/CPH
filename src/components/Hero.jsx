@@ -60,6 +60,9 @@ const Hero = () => {
                     <GlowingButton variant="primary" onClick={() => document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' })}>
                         Start Creating
                     </GlowingButton>
+                    <GlowingButton variant="secondary" onClick={() => openModal({ type: 'free-sample' })}>
+                        Get Free Sample
+                    </GlowingButton>
                     <GlowingButton variant="secondary" onClick={() => openModal({ type: 'demo' })}>
                         Book a Demo
                     </GlowingButton>

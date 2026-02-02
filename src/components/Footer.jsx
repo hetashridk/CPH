@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -18,19 +19,24 @@ const Footer = () => {
                             viewport={{ once: true }}
                             className="font-heading text-4xl md:text-5xl font-bold text-white mb-6"
                         >
-                            Ready to <span className="text-gradient-primary">Future-Proof</span> Your Brand?
+                            Redefine Your <span className="text-gradient-primary">Visual Reality</span>
                         </motion.h2>
                         <p className="text-gray-400 max-w-md mb-8 leading-relaxed">
                             Join the revolution of AI-driven marketing. Create studio-quality visuals in seconds, not days.
                         </p>
                         <div className="flex gap-4">
-                            {['Twitter', 'Instagram', 'LinkedIn'].map((social) => (
+                            {[
+                                { icon: Twitter, href: "#" },
+                                { icon: Instagram, href: "#" },
+                                { icon: Linkedin, href: "#" },
+                                { icon: Youtube, href: "#" }
+                            ].map((social, index) => (
                                 <a
-                                    key={social}
-                                    href="#"
+                                    key={index}
+                                    href={social.href}
                                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-primary hover:bg-primary/10 transition-all duration-300"
                                 >
-                                    {social[0]}
+                                    <social.icon size={18} />
                                 </a>
                             ))}
                         </div>

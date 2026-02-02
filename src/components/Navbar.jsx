@@ -3,8 +3,10 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlowingButton from './ui/GlowingButton';
+import { useModal } from '../context/ModalContext';
 
 const Navbar = () => {
+  const { openModal } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -18,9 +20,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: 'AI Marketing Studio', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Workshop', path: '/workshop' },
-    { name: 'Projects', path: '/projects' },
+    // { name: 'Projects', path: '/projects' },
   ];
 
   const variants = {
@@ -46,9 +49,7 @@ const Navbar = () => {
                 <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" stroke="none" />
               </svg>
             </div>
-            <span className="font-heading font-bold text-xl tracking-wide text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300">
-              AI Studio
-            </span>
+            <span className="font-heading font-bold text-xl tracking-wide text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300">CrossLinks</span>
           </Link>
 
           {/* Desktop Links */}
@@ -63,6 +64,13 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full box-border" />
               </Link>
             ))}
+            <button
+              onClick={() => openModal({ type: 'free-sample' })}
+              className="relative text-sm font-medium text-primary hover:text-white transition-colors duration-300 group"
+            >
+              Free Sample
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full box-border" />
+            </button>
             <GlowingButton variant="primary" className="!px-6 !py-2 !text-xs" onClick={() => { }}>
               Get Started
             </GlowingButton>
